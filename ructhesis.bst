@@ -1,5 +1,5 @@
-% BibTeX standard bibliography style `thuthesis.bst' derived from `unsrt'
-% This file is part of `thuthesis' package.
+% BibTeX standard bibliography style `ructhesis.bst' derived from `unsrt'
+% This file is part of `ructhesis' package.
 
 ENTRY
   { address
@@ -177,7 +177,7 @@ FUNCTION {fin.entry}
     'write$
   if$
   newline$
-  "\thudot" write$
+  "\rucdot" write$
   newline$
 }
 
@@ -982,7 +982,7 @@ FUNCTION {manual}
 FUNCTION {masterthesis.type}
 { lang empty$
     { "[D]" }
-    { "\thumasterbib" }
+    { "\rucmasterbib" }
   if$
 }
 
@@ -1053,7 +1053,7 @@ FUNCTION {online}
 FUNCTION {phdthesis.type}
 { lang empty$
     { "[D]" }
-    { "\thuphdbib" }
+    { "\rucphdbib" }
   if$
 }
 

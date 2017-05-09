@@ -1,7 +1,7 @@
 {
-  "name": "thuthesis",
-  "version": "5.3.2",
-  "description": "Tsinghua University Thesis LaTex Template",
+  "name": "ructhesis",
+  "version": "0.0.1",
+  "description": "Renmin University of China Thesis LaTex Template",
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build"
@@ -12,9 +12,9 @@
   },
   "keywords": [
     "LaTeX",
-    "ThuThesis"
+    "RucThesis"
   ],
-  "author": "Ruini Xue",
+  "author": "Yifan Xiong",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xueruini/thuthesis/issues"
