@@ -1,4 +1,4 @@
-# Makefile for ThuThesis
+# Makefile for RucThesis
 
 # Compiling method: latexmk/xelatex/pdflatex
 METHOD = latexmk
@@ -6,16 +6,13 @@ METHOD = latexmk
 LATEXMKOPTS = -xelatex
 # Basename of thesis
 THESISMAIN = main
-# Basename of shuji
-SHUJIMAIN = shuji
 
-PACKAGE=thuthesis
+PACKAGE=ructhesis
 SOURCES=$(PACKAGE).ins $(PACKAGE).dtx
 THESISCONTENTS=$(THESISMAIN).tex data/*.tex $(FIGURES)
 # NOTE: update this to reflect your local file types.
 FIGURES=$(wildcard figures/*.eps figures/*.pdf)
 BIBFILE=ref/*.bib
-SHUJICONTENTS=$(SHUJIMAIN).tex
 CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
 # make deletion work on Windows
@@ -27,9 +24,9 @@ else
 	OPEN = open
 endif
 
-.PHONY: all clean distclean dist thesis viewthesis shuji viewshuji doc viewdoc cls check FORCE_MAKE
+.PHONY: all clean distclean dist thesis viewthesis doc viewdoc cls check FORCE_MAKE
 
-all: doc thesis shuji
+all: doc thesis
 
 cls: $(CLSFILES)
 
@@ -46,11 +43,6 @@ viewthesis: thesis
 
 thesis: $(THESISMAIN).pdf
 
-viewshuji: shuji
-	$(OPEN) $(SHUJIMAIN).pdf
-
-shuji: $(SHUJIMAIN).pdf
-
 ifeq ($(METHOD),latexmk)
 
 $(PACKAGE).pdf: $(CLSFILES) FORCE_MAKE
@@ -58,9 +50,6 @@ $(PACKAGE).pdf: $(CLSFILES) FORCE_MAKE
 
 $(THESISMAIN).pdf: $(CLSFILES) FORCE_MAKE
 	$(METHOD) $(LATEXMKOPTS) $(THESISMAIN)
-
-$(SHUJIMAIN).pdf: $(CLSFILES) FORCE_MAKE
-	$(METHOD) $(LATEXMKOPTS) $(SHUJIMAIN)
 
 else ifneq (,$(filter $(METHOD),xelatex pdflatex))
 
@@ -80,27 +69,24 @@ $(THESISMAIN).bbl: $(BIBFILE)
 	-bibtex $(THESISMAIN)
 	$(RM) $(THESISMAIN).pdf
 
-$(SHUJIMAIN).pdf: $(CLSFILES) $(SHUJICONTENTS)
-	$(METHOD) $(SHUJIMAIN)
-
 else
 $(error Unknown METHOD: $(METHOD))
 
 endif
 
 clean:
-	latexmk -c $(PACKAGE).dtx $(THESISMAIN) $(SHUJIMAIN)
+	latexmk -c $(PACKAGE).dtx $(THESISMAIN)
 	-@$(RM) *~
 
 cleanall: clean
-	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf $(SHUJIMAIN).pdf
+	-@$(RM) $(PACKAGE).pdf $(THESISMAIN).pdf
 
 distclean: cleanall
 	-@$(RM) $(CLSFILES)
 	-@$(RM) -r dist
 
 check: FORCE_MAKE
-	ag 'Tsinghua University Thesis Template|\\def\\version|"version":' thuthesis.dtx package.json
+	ag 'Renmin University of China Thesis Template|\\def\\version|"version":' $(PACKAGE).dtx package.json
 
 dist: all
 	@if [ -z "$(version)" ]; then \
