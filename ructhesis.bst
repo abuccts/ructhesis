@@ -501,7 +501,7 @@ FUNCTION {format.citedate}
 { new.block "[" citedate * "]" * }
 
 FUNCTION {format.onlinemark}
-{ "[EB/OL]" }
+{ "~[EB/OL]" }
 
 
 INTEGERS { multiresult }

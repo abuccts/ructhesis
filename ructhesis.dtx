@@ -1088,8 +1088,7 @@
 % 打开默认选项。
 %    \begin{macrocode}
 \kvsetkeys{ruc}{%
-  raggedbottom,
-  arialtitle}
+  raggedbottom}
 %    \end{macrocode}
 %
 % 解析用户传递过来的选项，并加载 \pkg{ctexbook}。
@@ -1767,13 +1766,8 @@
 }
 \newcommand\listequationname{公式目录}
 \newcommand\equationname{公式}
-\ifruc@bachelor
-  \newcommand{\cabstractname}{中文摘要}
-  \newcommand{\eabstractname}{ABSTRACT}
-\else
-  \newcommand{\cabstractname}{摘\hspace{\ccwd}要}
-  \newcommand{\eabstractname}{Abstract}
-\fi
+\newcommand{\cabstractname}{摘\hspace{\ccwd}要}
+\newcommand{\eabstractname}{Abstract}
 \let\CJK@todaysave=\today
 \def\CJK@todaysmall@short{\the\year 年 \the\month 月}
 \def\CJK@todaysmall{\the\year 年 \the\month 月 \the\day 日}
@@ -1868,7 +1862,7 @@
     beforeskip={\ifruc@bachelor 13bp\else 9bp\fi},
     aftername=\hskip\ccwd,
     afterskip={\ifruc@bachelor 20bp\else 24bp\fi},
-    format={\centering\ruc@title@font\heiti\ifruc@bachelor\xiaosan\else\sanhao[1]\fi},
+    format={\centering\ruc@title@font\heiti\ifruc@bachelor\sanhao\else\sanhao[1]\fi},
     nameformat=\relax,
     numberformat=\relax,
     titleformat=\ruc@chapter@titleformat,
@@ -2172,8 +2166,8 @@
 % \changes{thuthesis v3.1}{2006/06/17}{重新定义摘要成为环境。}
 % \changes{thuthesis v5.2.2}{2016/01/31}{用 \pkg{environ} 封装的 \cs{Collect@Body}。}
 %    \begin{macrocode}
-\newcommand{\ruc@@shittable}[1]{\long\gdef\ruc@shittable{#1}}
-\newenvironment{shittable}{\Collect@Body\ruc@@shittable}{}
+\newcommand{\ruc@@addpages}[1]{\long\gdef\ruc@addpages{#1}}
+\newenvironment{addpages}{\Collect@Body\ruc@@addpages}{}
 \newcommand{\ruc@@cabstract}[1]{\long\gdef\ruc@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\ruc@@cabstract}{}
 \newcommand{\ruc@@eabstract}[1]{\long\gdef\ruc@eabstract{#1}}
@@ -2339,10 +2333,10 @@
     \parbox[b][2.4cm][t]{\textwidth}{%
       \ifruc@secret{\heiti\sanhao\ruc@secretlevel\ruc@secret@content}\else\rule{1cm}{0cm}\fi}
     \ifruc@bachelor
-      \vskip0.45cm
+      \vskip0.5cm
       {\fontsize{28bp}{28bp}\heiti\ruc@bachelor@subtitle}
-      \vskip1.2cm
-      \fontsize{28bp}{28bp}\heiti\ruc@ctitle
+      \vskip1.3cm
+      {\fontsize{28bp}{28bp}\heiti\ruc@ctitle}
       \vskip1.3cm
     \else
       \vskip0.8cm
@@ -2366,31 +2360,31 @@
 %    \begin{macrocode}
     \ifruc@bachelor
       \vskip3.2cm
-      {\fangsong\sanhao[1.8]
+      {\xiaoer[1.8]\heiti
         \setlength{\ruc@title@width}{4em}
         \setlength{\extrarowheight}{6pt}
         \setlength{\tabcolsep}{0pt}
         \begin{tabular}{llc}
 	       \ruc@put@title{\ruc@author@title}     & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cauthor}\\
+             & \ruc@underline[11em]{\ruc@cauthor}\\
            \ruc@put@title{\ruc@department@title} & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cdepartment}\\
+             & \ruc@underline[11em]{\ruc@cdepartment}\\
            \ruc@put@title{\ruc@major@title}      & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cmajor}\\
+             & \ruc@underline[11em]{\ruc@cmajor}\\
            \ruc@put@title{\ruc@grade@title}      & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cgrade}\\
+             & \ruc@underline[11em]{\ruc@cgrade}\\
            \ruc@put@title{\ruc@studentid@title}  & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cstudentid}\\
+             & \ruc@underline[11em]{\ruc@cstudentid}\\
            \ruc@put@title{\ruc@supervisor@title} & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@csupervisor}\\
+             & \ruc@underline[11em]{\ruc@csupervisor}\\
            \ifx\ruc@cassosupervisor\@empty\else%
              \ruc@put@title{\ruc@assosuper@title} & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cassosupervisor}\\
+             & \ruc@underline[11em]{\ruc@cassosupervisor}\\
            \fi
            \ruc@put@title{\ruc@score@title}      & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cscore}\\
+             & \ruc@underline[11em]{\ruc@cscore}\\
            \ruc@put@title{\ruc@date@title}       & \ruc@title@sep\hskip1pt
-             & \ruc@underline[10em]{\ruc@cdate}\\
+             & \ruc@underline[11em]{\ruc@cdate}\\
          \end{tabular}
        }
     \else
@@ -2541,18 +2535,6 @@
      & \ruc@sigdate\\
   \end{tabular}
 }
-\newcommand{\ruc@makeshittable}{
-  \ifruc@bachelor\clearpage\else\cleardoublepage\fi
-  \ifruc@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
-  \begin{center}\sanhao\heiti{中国人民大学本科生毕业论文简表}\end{center}
-  \vskip5pt\par
-  \ruc@shittable
-  \vskip1.0cm
-  \hspace*{10.0cm}\begin{tabular}{ll}
-  \ruc@teachersig & \hspace{7em}\\
-  & \ruc@sigdate\\
-  \end{tabular}
-}
 %    \end{macrocode}
 % \end{macro}
 %
@@ -2600,7 +2582,7 @@
 %    \begin{macrocode}
     \ifruc@bachelor\clearpage\else\cleardoublepage\fi%
     \IfNoValueTF{#1}{%
-      \ifruc@bachelor\ruc@authorization@mk\ruc@makeshittable\else%
+      \ifruc@bachelor\ruc@authorization@mk\else%
         \begin{list}{}{%
           \topsep\z@%
           \listparindent\parindent%
@@ -2613,6 +2595,10 @@
     }{%
       \includepdf{#1}%
     }%
+    \ifdefined\ruc@addpages
+      \ifruc@bachelor\clearpage\else\cleardoublepage\fi
+      \ruc@addpages
+    \fi
   \end{titlepage}
 %    \end{macrocode}
 %
@@ -2685,7 +2671,7 @@
 % 非常怪异：虽然正文前的封面部分为右开，但是英文摘要要跟中文摘要连续。
 % \changes{thuthesis v2.5.1}{2006/05/28}{研究生封面英文摘要连续。}
 %    \begin{macrocode}
-  \ruc@chapter*[]{\eabstractname} % no tocline
+  \ruc@chapter*[]{\bfseries\eabstractname} % no tocline
 %    \end{macrocode}
 %
 % 摘要内容用小四号 Times New Roman。
@@ -2898,7 +2884,7 @@
 % 样的话很多人肯定不知道该怎么做了。
 % \changes{thuthesis v3.1}{2007/06/19}{引入 \cs{thudot} 来自动完成参考文献最后的点。}
 %    \begin{macrocode}
-\def\rucdot{\ifruc@bachelor\else\unskip.\fi}
+\def\rucdot{\ifruc@bachelor\unskip.\else\unskip.\fi}
 %</cls>
 %    \end{macrocode}
 % \end{macro}
