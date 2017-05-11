@@ -1138,6 +1138,11 @@
 \RequirePackage{amsmath}
 %    \end{macrocode}
 %
+% WASY2 符号。
+%    \begin{macrocode}
+\RequirePackage{wasysym}
+%    \end{macrocode}
+%
 % \pkg{newtx} 设置 Times New Roman，Helvetica。
 % \changes{thuthesis v3.1}{2007/06/16}{replace \pkg{mathptmx} with \pkg{txfonts}.}
 % \changes{thuthesis v5.2.1}{2016/01/14}{使用 \pkg{newtx} 替换 \pkg{txfonts}。}
@@ -1221,6 +1226,7 @@
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
+\RequirePackage{colortbl}
 %    \end{macrocode}
 %
 % 使用三线表：\cs{toprule}，\cs{midrule}，\cs{bottomrule}。
@@ -2287,11 +2293,17 @@
 %\ifruc@bachelor
 本学位论文作者完全了解学校有关保障、使用学位论文的规定，同意学校保留并向有关学位论文管理部门或机构送交论文的复印件和电子版，允许论文被查阅和借阅。本人授权优秀学士论文评选机构将本学位论文的全部或部分内容编入有关数据进行检索，可以采用影印、缩印或扫描等复制手段保存和汇编本学位论文。
 }
+\def\ruc@secret@squareone{
+  \ifruc@secret{\xiaosan\CheckedBox}\else{\sanhao\Square}\fi}
+\def\ruc@secret@squaretwo{
+  \ifruc@secret{\sanhao\Square}\else{\xiaosan\CheckedBox}\fi}
+\def\ruc@secret@check{
+  {\xiaosan\checked}}
 \newcommand{\ruc@authorizationaddon}{%
-\settowidth{\hangindent}{空格本学位论文属于 }
-\mbox{本学位论文属于 }1、保密$\square$，在10年解密后适用本授权书\\
-\mbox{}2、不保密$\square$。\\
-\mbox{}（请在以上相应方框内打“\ding{51}”）
+\settowidth{\hangindent}{空格本学位论文属于~}
+\mbox{本学位论文属于~}~1、保密\ruc@secret@squareone，在10年解密后适用本授权书\\
+\mbox{}~2、不保密\ruc@secret@squaretwo。\\
+\mbox{}（请在以上相应方框内打“\ruc@secret@check”）
 }
 \newcommand{\ruc@authorsig}{作者签名：}
 \newcommand{\ruc@teachersig}{导师签名：}
@@ -2517,23 +2529,25 @@
   \begin{center}\sanhao\heiti\ruc@declarename\end{center}
   \vskip5pt\par
   \ruc@declaretext\par
-  \vskip1.0cm
+  \vskip1.5cm
+  {\def\arraystretch{1.5}
   \hspace*{10.0cm}\begin{tabular}{ll}
     \ruc@authorsig & \hspace{7em}\\
     & \ruc@sigdate\\
-  \end{tabular}
+  \end{tabular}}
   \vskip2.2cm
   \begin{center}\sanhao\heiti\ruc@authtitle\end{center}
   \vskip5pt\par
   \ruc@authorization\par
   \ruc@authorizationaddon\par
-  \vskip1.0cm
+  \vskip1.5cm
+  {\def\arraystretch{1.5}
   \hspace*{10.0cm}\begin{tabular}{ll}
     \ruc@authorsig & \hspace{7em}\\
      & \ruc@sigdate\\
     \ruc@teachersig & \hspace{7em}\\
      & \ruc@sigdate\\
-  \end{tabular}
+  \end{tabular}}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -2709,8 +2723,8 @@
 \newcommand{\ruc@denotation@name}{主要符号对照表}
 %</cfg>
 %<*cls>
-\newenvironment{denotation}[1][2.5cm]{%
-  \ruc@chapter*[]{\ruc@denotation@name} % no tocline
+\newenvironment{denotation}[1][4.5cm]{%
+  \ruc@chapter*{\ruc@denotation@name} % no tocline
   \vskip-30bp\xiaosi[1.6]\begin{ruc@denotation}[labelwidth=#1]
 }{%
   \end{ruc@denotation}
