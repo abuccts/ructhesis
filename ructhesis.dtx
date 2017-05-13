@@ -1076,6 +1076,10 @@
 \DeclareBoolOption{pifootnote}
 %    \end{macrocode}
 %
+%    \begin{macrocode}
+\DeclareBoolOption{twosideprint}
+%    \end{macrocode}
+%
 % 将选项传递给 \pkg{ctexbook}。
 %    \begin{macrocode}
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -1295,7 +1299,7 @@
   hcentering,
   ignoreall,
   nomarginpar}
-\ifthu@bachelor
+\ifruc@bachelor
 \geometry{
   left=25mm,
   headheight=11mm,
@@ -1303,6 +1307,10 @@
   textheight=235mm,
   bottom=31mm,
   footskip=11mm}
+\ifruc@twosideprint\geometry{
+  inner=28mm,
+  outer=22mm}
+\fi
 \else
 \geometry{
   left=30mm,
@@ -1506,6 +1514,11 @@
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{ruc@cover}{%
+	\fancyhead[C]{\includegraphics[width=4.13cm]{figures/ruc-head-logo.eps}}
+	\fancyfoot{}
+	\renewcommand{\headrulewidth}{0.4pt}
+	\renewcommand{\footrulewidth}{0pt}}
 \fancypagestyle{ruc@plain}{%
   \fancyhead{}
   \fancyfoot[C]{\xiaowu 第 \thepage 页}
@@ -2525,6 +2538,7 @@
 % 支持扫描文件替换。
 %    \begin{macrocode}
 \newcommand{\ruc@authorization@mk}{%
+  \thispagestyle{ruc@cover}
   \ifruc@bachelor\vspace*{0.2cm}\else\vspace*{0.42cm}\fi % shit code!
   \begin{center}\sanhao\heiti\ruc@declarename\end{center}
   \vskip5pt\par
@@ -2574,7 +2588,7 @@
 %
 % 论文封面第一页！
 %    \begin{macrocode}
-   \thispagestyle{ruc@logo}\ruc@first@titlepage
+   \thispagestyle{ruc@cover}\ruc@first@titlepage
 %    \end{macrocode}
 %
 % \changes{thuthesis v2.5}{2006/05/19}{本科论文评语位置调整。}
@@ -2594,7 +2608,11 @@
 % \changes{thuthesis v4.6}{2011/05/29}{博士后报告无授权说明。}
 % \changes{thuthesis v5.0.0}{2015/06/05}{使用 \pkg{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
-    \ifruc@bachelor\clearpage\else\cleardoublepage\fi%
+    \ifruc@bachelor
+      \ifruc@twosideprint\cleardoublepage\else\clearpage\fi
+    \else
+      \cleardoublepage
+    \fi%
     \IfNoValueTF{#1}{%
       \ifruc@bachelor\ruc@authorization@mk\else%
         \begin{list}{}{%
@@ -2610,8 +2628,12 @@
       \includepdf{#1}%
     }%
     \ifdefined\ruc@addpages
-      \ifruc@bachelor\clearpage\else\cleardoublepage\fi
-      \ruc@addpages
+      \ifruc@bachelor
+        \ifruc@twosideprint\cleardoublepage\else\clearpage\fi
+      \else
+        \cleardoublepage
+      \fi
+      \pagestyle{ruc@cover}\ruc@addpages
     \fi
   \end{titlepage}
 %    \end{macrocode}
@@ -2655,7 +2677,11 @@
 % \changes{thuthesis v4.5.2}{2010/05/29}{本科论文摘要亦无需右开。}
 %    \begin{macrocode}
 \newcommand{\ruc@makeabstract}{%
-  \ifruc@bachelor\clearpage\else\cleardoublepage\fi
+  \ifruc@bachelor
+    \ifruc@twosideprint\cleardoublepage\else\clearpage\fi
+  \else
+    \cleardoublepage
+  \fi
   \ruc@chapter*[]{\cabstractname} % no tocline
   \ifruc@bachelor
     \pagestyle{ruc@logo}
