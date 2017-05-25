@@ -162,7 +162,8 @@
 %
 %
 % \begin{abstract}\noindent
-%   此宏包旨在建立一个简单易用的中国人民大学学位论文模板，包括本科、硕士以及博士论文。
+%   此宏包旨在建立一个简单易用的中国人民大学学位论文 \LaTeX\ 模板，包括本科、硕士
+% 以及博士论文。
 % \end{abstract}
 %
 % \vskip2cm
@@ -172,11 +173,9 @@
 % \begin{enumerate}
 % \item 本模板的发布遵守 \LaTeX\ Project Public License，使用前请认真阅读协议内
 %   容。
-% \item 本模板为作者根据清华大学教务处颁发的《综合论文训练写作指南》，清华大学研
-%   究生院颁发的《研究生学位论文写作指南》，清华大学《编写“清华大学博士后研究报
-%   告”参考意见》编写而成，旨在供清华大学毕业生撰写学位论文使用。
-% \item 清华大学教务处和研究生院只提供毕业论文写作指南，不提供官方模板，也不会授
-%   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
+% \item 本模板为作者根据中国人民大学教务处颁发的《毕业论文指导手册》编写而成，
+% 旨在供中国人民大学毕业生撰写学位论文使用。
+% \item 此模板仅为指导手册论文结构与格式要求的参考实现，不保证格式审查老师
 %   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 % \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
 %   守 \LaTeX\ Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
@@ -196,10 +195,10 @@
 %
 % \section{模板介绍}
 % \ructhesis\ (\textbf{R}enmin\textbf{U}niversity of \textbf{C}hina \LaTeX\
-% \textbf{Thesis} Template) 是为了帮助中国人民大学毕业生撰写毕业论文而编写
-% 的 \LaTeX\ 论文模板。
+% \textbf{Thesis} Template) 是为了帮助中国人民大学毕业生撰写毕业论文而修改自
+% ~\textsc{ThuThesis} 的 \LaTeX\ 论文模板。
 %
-% 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
+% 本文档将尽量完整地介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
 % 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
 %
@@ -336,9 +335,9 @@
 % \subsection{升级}
 % \label{sec:updgrade}
 % \ructhesis\ 升级非常简单，可以通过版本控制工具 git 更新，
-% 或在 GitHub 上下载最新的开发版，
-% 将 \file{ructhesis.ins}，\file{ructhesis.dtx} 和 \file{ructhesis.bst} 拷贝至工作目
-% 录覆盖相应的文件，然后运行：
+% 或在 GitHub 上下载最新的 release 版本，
+% 将 \file{ructhesis.ins}，\file{ructhesis.dtx} 和 \file{ructhesis.bst} 拷贝至
+% 工作目录覆盖相应的文件，然后运行：
 % \begin{shell}
 % $ latex ructhesis.ins
 % \end{shell}
@@ -383,7 +382,7 @@
 % % 本科论文
 % \documentclass[type=bachelor]{ructhesis}
 %
-% % 硕士论文
+% % 博士论文
 % \documentclass[type=doctor]{ructhesis}
 % \end{latex}
 %
@@ -511,8 +510,8 @@
 % }
 % \end{latex}
 %
-% \note[注意：]{\cs{rucsetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，否则
-% 会报错。}
+% \note[注意：]{\cs{rucsetup} 使用 \pkg{kvoptions} 机制，所以配置项之间不能有空行，
+% 否则会报错。}
 %
 % 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
 % 在示例文档的 \file{data/cover.tex} 中。
@@ -544,6 +543,17 @@
 % % 等价：
 % \ctitle{论文中文题目}
 % \etitle{Thesis English Title}
+% \end{latex}
+%
+% \subsubsection{论文编码}
+% \DescribeMacro{\ccodeno}
+% 论文编码，参考教务处论文指导手册。
+% \begin{latex}
+% \rucsetup{
+%   ccodeno={RUC-XX-xxxxxx-20yy20zzzz}
+% }
+% % 等价：
+% \ccodeno{RUC-XX-xxxxxx-20yy20zzzz}
 % \end{latex}
 %
 % \subsubsection{作者姓名}
@@ -592,18 +602,18 @@
 % \edegree{degree in English}
 % \end{latex}
 %
-% \subsubsection{院系名称}
+% \subsubsection{学院名称}
 % \DescribeMacro{\cdepartment}
 % \DescribeMacro{\edepartment}
-% 院系名称。
+% 学院名称。
 % \begin{latex}
 % \rucsetup{
-%   cdepartment={系名全称},
-%   edepartment={Deparment of CS}
+%   cdepartment={学院全称},
+%   edepartment={School of CS}
 % }
 % % 等价：
-% \cdepartment{系名全称}
-% \edepartment{Department of CS}
+% \cdepartment{学院全称}
+% \edepartment{School of CS}
 % \end{latex}
 %
 % \subsubsection{专业名称}
@@ -618,6 +628,20 @@
 % % 等价：
 % \cmajor{专业名称}
 % \emajor{Major in English}
+% \end{latex}
+%
+% \subsubsection{年级学号}
+% \DescribeMacro{\cgrade}
+% \DescribeMacro{\cstudentid}
+% 作者年级、学号。
+% \begin{latex}
+% \rucsetup{
+%   cgrade={20xx级},
+%   cstudentid={20xx20yyyy}
+% }
+% % 等价：
+% \cgrade{20xx级}
+% \cstudentid{20xx20yyyy}
 % \end{latex}
 %
 % \subsubsection{导师}
@@ -663,10 +687,21 @@
 % \ecosupervisor{3rd Boss}
 % \end{latex}
 %
+% \subsubsection{论文成绩}
+% \DescribeMacro{\cscore}
+% 论文成绩，若手写则设为空。
+% \begin{latex}
+% \rucsetup{
+%   cscore={}
+% }
+% % 等价：
+% \cscore{}
+% \end{latex}
+%
 % \subsubsection{成文日期}
 % \DescribeMacro{\cdate}
 % \DescribeMacro{\edate}
-% 默认为当前时间，也可以自己指定。
+% 自己指定日期。
 % \begin{latex}
 % \rucsetup{
 %   cdate={中文日期},
@@ -723,7 +758,7 @@
 % \subsubsection{符号对照表}
 % \DescribeEnv{denotation}
 % 主要符号表环境，跟 \env{description} 类似，使用方法参见示例文件。带一个可选参数，
-% 用来指定符号列的宽度（默认为 2.5cm）。
+% 用来指定符号列的宽度（默认为 4.5cm）。
 % \begin{latex}
 % \begin{denotation}
 %   \item[E] 能量
@@ -734,7 +769,7 @@
 %
 % 如果默认符号列的宽度不满意，可以通过参数来调整：
 % \begin{latex}
-% \begin{denotation}[1.5cm] % 设置为 1.5cm
+% \begin{denotation}[2.5cm] % 设置为 2.5cm
 %   \item[E] 能量
 %   \item[m] 质量
 %   \item[c] 光速
@@ -798,7 +833,7 @@
 %
 % \subsection{封底部分}
 %
-% \subsubsection{致谢声明}
+% \subsubsection{致谢}
 % \DescribeEnv{acknowledgement}
 % 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以啦！
 % \begin{latex}
@@ -989,7 +1024,7 @@
 %
 % \section{致谢}
 % \label{sec:thanks}
-% 本模板修改自 ThuThesis, 感谢薛瑞尼同学提供的 \LaTeX 模板!
+% 本模板及文档均修改自 \textsc{ThuThesis}, 感谢薛瑞尼同学提供的 \LaTeX 模板!
 %
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
@@ -1016,6 +1051,7 @@
 % \changes{thuthesis v4.6}{2011/04/26}{增加 postdoctor 选项。}
 % \changes{thuthesis v4.8}{2014/11/25}{v4.7曾经想发布，但是一直没有做，于是就被跳过了，算是造一个段子吧。}
 % \changes{thuthesis v4.8.1}{2014/12/09}{按照 CTAN 的要求整理一下文件。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{删除 postdoctor 选项。}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{Ruc-Thesis}
@@ -1076,6 +1112,7 @@
 \DeclareBoolOption{pifootnote}
 %    \end{macrocode}
 %
+% 双面打印选项（默认关闭）
 %    \begin{macrocode}
 \DeclareBoolOption{twosideprint}
 %    \end{macrocode}
@@ -1143,6 +1180,7 @@
 %    \end{macrocode}
 %
 % WASY2 符号。
+% \changes{ructhesis v0.0.1}{2017/05/09}{使用 \pkg{wasysym} 符号。}
 %    \begin{macrocode}
 \RequirePackage{wasysym}
 %    \end{macrocode}
@@ -1227,6 +1265,7 @@
 %
 % 表格控制
 % \changes{thuthesis v2.6}{2006/06/09}{增加 \pkg{longtable}。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{增加 \pkg{colortbl}。}
 %    \begin{macrocode}
 \RequirePackage{array}
 \RequirePackage{longtable}
@@ -1292,6 +1331,7 @@
 % \changes{thuthesis v5.0.0}{2015/03/10}{不再将页面尺寸写入 dvi，因为已不支持 dvips，
 % 而该方案会使得在使用 tikzexternalize 时外部 PDF 图片 BBox 不对。}
 % \changes{thuthesis v5.0.0}{2015/12/14}{用 \pkg{geometry} 简化设置。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{修改本科论文页面边距，增加双面打印时的装订线边距。}
 %    \begin{macrocode}
 \RequirePackage{geometry}
 \geometry{
@@ -1500,6 +1540,7 @@
 % \changes{thuthesis v2.5}{2006/05/20}{增加 empty 页面样式。}
 % \changes{thuthesis v4.7}{2012/05/29}{本科页码用小五号字。}
 % \changes{thuthesis v5.0.0}{2015/12/20}{利用 \pkg{fancyhdr} 设置页眉页脚。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{本科增加人大校徽页眉。}
 % 定义四种页眉页脚格式：
 % \begin{itemize}
 % \item \texttt{ruc@empty}：页眉页脚都没有
@@ -2047,6 +2088,7 @@
 %
 % \changes{thuthesis v2.0}{2005/12/18}{增加了封面密级，增加博士封面支持}
 % \changes{thuthesis v4.6}{2011/04/27}{增加博士后相关指令。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{增加封面论文编码、年级、学号、论文成绩。}
 %
 % \begin{macro}{\secretlevel}
 % \begin{macro}{\secretyear}
@@ -2068,35 +2110,20 @@
 % \end{macro}
 % \end{macro}
 %
-% \begin{macro}{\cauthor}
-% \begin{macro}{\eauthor}
-% \begin{macro}{\csupervisor}
-% \begin{macro}{\cassosupervisor}
-% \begin{macro}{\ccosupervisor}
-% \begin{macro}{\esupervisor}
-% \begin{macro}{\eassosupervisor}
-% \begin{macro}{\ecosupervisor}
-% 作者、导师、副导师、联合指导老师。
+% \begin{macro}{\ccodeno}
+% 论文编码。
 %    \begin{macrocode}
 \ruc@def@term{ccodeno}
-\ruc@def@term{cgrade}
-\ruc@def@term{cstudentid}
-\ruc@def@term{cscore}
-\ruc@def@term{cauthor}
-\ruc@def@term{csupervisor}
-\ruc@def@term{cassosupervisor}
-\ruc@def@term{ccosupervisor}
-\ruc@def@term{eauthor}
-\ruc@def@term{esupervisor}
-\ruc@def@term{eassosupervisor}
-\ruc@def@term{ecosupervisor}
 %    \end{macrocode}
 % \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
-% \end{macro}
+%
+% \begin{macro}{\cauthor}
+% \begin{macro}{\eauthor}
+% 论文作者。
+%    \begin{macrocode}
+\ruc@def@term{cauthor}
+\ruc@def@term{eauthor}
+%    \end{macrocode}
 % \end{macro}
 % \end{macro}
 %
@@ -2112,7 +2139,7 @@
 %
 % \begin{macro}{\cdepartment}
 % \begin{macro}{\edepartment}
-% 院系中英文名称。
+% 学院中英文名称。
 %    \begin{macrocode}
 \ruc@def@term{cdepartment}
 \def\caffil{% for compatibility
@@ -2130,7 +2157,7 @@
 %
 % \begin{macro}{\cmajor}
 % \begin{macro}{\emajor}
-% 学位中英文名称。
+% 专业中英文名称。
 % \changes{thuthesis v2.5}{2006/05/20}{院系和专业分别改名用 department 和 major，代替原来
 % 的 affil 和 subject。}
 %    \begin{macrocode}
@@ -2148,6 +2175,45 @@
 % \end{macro}
 % \end{macro}
 %
+% \begin{macro}{\cgrade}
+% \begin{macro}{\cstudentid}
+% 作者年级、学号。
+%    \begin{macrocode}
+\ruc@def@term{cgrade}
+\ruc@def@term{cstudentid}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\csupervisor}
+% \begin{macro}{\cassosupervisor}
+% \begin{macro}{\ccosupervisor}
+% \begin{macro}{\esupervisor}
+% \begin{macro}{\eassosupervisor}
+% \begin{macro}{\ecosupervisor}
+% 导师、副导师、联合指导老师。
+%    \begin{macrocode}
+\ruc@def@term{csupervisor}
+\ruc@def@term{cassosupervisor}
+\ruc@def@term{ccosupervisor}
+\ruc@def@term{esupervisor}
+\ruc@def@term{eassosupervisor}
+\ruc@def@term{ecosupervisor}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\cscore}
+% 论文成绩。
+%    \begin{macrocode}
+\ruc@def@term{cscore}
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\cdate}
 % \begin{macro}{\edate}
 % 论文成文日期。
@@ -2155,25 +2221,6 @@
 \ruc@def@term{cdate}
 \ruc@def@term{edate}
 %    \end{macrocode}
-% \end{macro}
-% \end{macro}
-%
-% \begin{macro}{\id}
-% \begin{macro}{\udc}
-% \begin{macro}{\catalognumber}
-% \begin{macro}{\cfirstdiscipline}
-% \begin{macro}{\cseconddiscipline}
-% 博士后专用封面参数。
-%    \begin{macrocode}
-\ruc@def@term{id}
-\ruc@def@term{udc}
-\ruc@def@term{catalognumber}
-\ruc@def@term{cfirstdiscipline}
-\ruc@def@term{cseconddiscipline}
-%    \end{macrocode}
-% \end{macro}
-% \end{macro}
-% \end{macro}
 % \end{macro}
 % \end{macro}
 %
@@ -2185,8 +2232,6 @@
 % \changes{thuthesis v3.1}{2006/06/17}{重新定义摘要成为环境。}
 % \changes{thuthesis v5.2.2}{2016/01/31}{用 \pkg{environ} 封装的 \cs{Collect@Body}。}
 %    \begin{macrocode}
-\newcommand{\ruc@@addpages}[1]{\long\gdef\ruc@addpages{#1}}
-\newenvironment{addpages}{\Collect@Body\ruc@@addpages}{}
 \newcommand{\ruc@@cabstract}[1]{\long\gdef\ruc@cabstract{#1}}
 \newenvironment{cabstract}{\Collect@Body\ruc@@cabstract}{}
 \newcommand{\ruc@@eabstract}[1]{\long\gdef\ruc@eabstract{#1}}
@@ -2224,6 +2269,15 @@
 % \end{macro}
 % \end{macro}
 %
+% \begin{environment}{addpages}
+% 增加封面附加页，用来放本科论文简表。
+% \changes{ructhesis v0.0.1}{2017/05/09}{增加封面附加页。}
+%    \begin{macrocode}
+\newcommand{\ruc@@addpages}[1]{\long\gdef\ruc@addpages{#1}}
+\newenvironment{addpages}{\Collect@Body\ruc@@addpages}{}
+%    \end{macrocode}
+% \end{environment}
+%
 % \begin{macro}{\rucsetup}
 % \changes{thuthesis v5.1.0}{2015/12/26}{通过 \cs{thusetup} 统一设置封面信息。}
 % 由上可见，封面和封底有一大堆信息需要设置，为了简化操作界面，提供一
@@ -2250,6 +2304,8 @@
 % \changes{thuthesis v4.7}{2012/05/27}{修正本科生作者信息名称。}
 % \changes{thuthesis v4.7}{2012/05/27}{本科生关键字也用分号分割了。}
 % \changes{thuthesis v5.3.0}{2016/03/11}{更新到研究生院 2016.3 指南。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{更新封面文字信息。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{增加原创性声明和版权声明。}
 % 定义封面用到的各种文字。
 %    \begin{macrocode}
 %<*cfg>
@@ -2341,6 +2397,7 @@
 % \changes{thuthesis v4.7}{2011/11/28}{硕士中文封面不再需要英文标题。}
 % \changes{thuthesis v4.7}{2012/05/30}{本科生题目下划线长度自动适应字数。}
 % \changes{thuthesis v5.1.0}{2015/12/27}{利用 \env{CJKfilltwosides} 优化封面排版。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{更新封面。}
 %
 %    \begin{macrocode}
 %<*cls>
@@ -2382,6 +2439,7 @@
 % \changes{thuthesis v3.1}{2007/10/09}{重新放置封面表格的提示元素。}
 % \changes{thuthesis v4.4.3}{2008/06/09}{修改本科生论文封面格式以符合新样例。}
 % \changes{thuthesis v5.1.0}{2015/12/27}{修改联合指导教师显示问题。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{更新封面表格。}
 %    \begin{macrocode}
     \ifruc@bachelor
       \vskip3.2cm
@@ -2445,6 +2503,7 @@
 %    \end{macrocode}
 %
 % \changes{thuthesis v4.4.3}{2008/06/09}{修改本科生论文封面日期格式以符合新样例。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{封面日期移至表格中。}
 %    \begin{macrocode}
     \end{center}} % end of titlepage
 %</cls>
@@ -2602,11 +2661,12 @@
     \fi
 %    \end{macrocode}
 %
-% 授权说明
+% 授权说明和附加页
 % \changes{thuthesis v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{thuthesis v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{thuthesis v4.6}{2011/05/29}{博士后报告无授权说明。}
 % \changes{thuthesis v5.0.0}{2015/06/05}{使用 \pkg{pdfpages} 宏包支持本硕博论文授权说明扫描版(\#36)。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{增加封面附加页。}
 %    \begin{macrocode}
     \ifruc@bachelor
       \ifruc@twosideprint\cleardoublepage\else\clearpage\fi
@@ -2771,17 +2831,15 @@
 % \end{environment}
 %
 %
-% \subsubsection{致谢以及声明}
+% \subsubsection{致谢}
 % \label{sec:ackanddeclare}
 %
 % \begin{environment}{acknowledgement}
-% 支持扫描文件替换。
+% 致谢。
 % \changes{thuthesis v2.4}{2006/04/14}{调整\textbf{致谢}等中间的距离。}
 %    \begin{macrocode}
 %<*cfg>
 \newcommand{\ruc@ackname}{致\hspace{1em}谢}
-%\newcommand{\ruc@signature}{签\hspace{1em}名：}
-%\newcommand{\ruc@backdate}{日\hspace{1em}期：}
 %</cfg>
 %    \end{macrocode}
 %
@@ -2804,9 +2862,9 @@
   }
 %    \end{macrocode}
 %
-% 声明部分
 % \changes{thuthesis v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
 % \changes{thuthesis v5.0.0}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
+% \changes{ructhesis v0.0.1}{2017/05/09}{将声明移至扉页。}
 %    \begin{macrocode}
   {\relax}
 %    \end{macrocode}
@@ -2984,7 +3042,7 @@
 % \subsection{附录}
 % \label{sec:appendix}
 % \begin{environment}{appendix}
-% 主要给本科做外文翻译用。
+% 放代码、文献材料。
 %    \begin{macrocode}
 %<*cls>
 \let\ruc@appendix\appendix
@@ -3089,21 +3147,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \subsection{书脊}
-% \label{sec:shuji}
-% \begin{macro}{\shuji}
-% 单独使用书脊命令会在新的一页产生竖排书脊。
-% \changes{thuthesis v4.5}{2009/01/04}{简化代码，同时支持 \XeLaTeX。}
-% \changes{thuthesis v5.0.0}{2015/12/21}{扩展 \cs{shuji}\oarg{标题}\oarg{作者}。}
-%    \begin{macrocode}
-%<*cls>
-\NewDocumentCommand{\shuji}{O{\ruc@ctitle} O{\ruc@cauthor}}{%
-  \newpage\thispagestyle{empty}\fangsong\xiaosan\ziju{0.4}%
-  \noindent\hfill\rotatebox[origin=lt]{-90}{\makebox[\textheight]{#1\hfill#2}}}
-%</cls>
-%    \end{macrocode}
-% \end{macro}
-%
 % \subsection{自定义命令和环境}
 % \label{sec:userdefine}
 %
@@ -3139,7 +3182,10 @@
 \RequirePackage[UTF8,scheme=chinese]{ctex}
 \RequirePackage{newpxtext}
 \RequirePackage{newpxmath}
-\RequirePackage{geometry}
+\RequirePackage[
+  top=2.5cm, bottom=2.5cm,
+  left=4cm, right=2cm,
+  headsep=3mm]{geometry}
 \RequirePackage{array,longtable,booktabs}
 \RequirePackage{listings}
 \RequirePackage{fancyhdr}
@@ -3148,9 +3194,10 @@
 \RequirePackage{etoolbox}
 \RequirePackage{metalogo}
 
+\definecolor{rucred}{RGB}{137, 21, 36}
 \colorlet{ruc@macro}{blue!60!black}
 \colorlet{ruc@env}{blue!70!black}
-\colorlet{ruc@option}{purple}
+\colorlet{ruc@option}{rucred}
 \patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{ruc@macro}}{}{}
 \patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{ruc@macro}}{}{}
 \patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{ruc@env}}{}{}
@@ -3213,13 +3260,13 @@
 \lstdefinestyle{lstStyleShell}{%
    style=lstStyleBase,
    frame=l,
-   rulecolor=\color{purple},
+   rulecolor=\color{violet},
    language=bash}
 
 \lstdefinestyle{lstStyleLaTeX}{%
    style=lstStyleBase,
    frame=l,
-   rulecolor=\color{violet},
+   rulecolor=\color{rucred},
    language=[LaTeX]TeX}
 
 \lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
@@ -3239,7 +3286,6 @@
   \color{magenta}{\bfseries #1}\emph{#2}}}
 
 \def\ructhesis{\textsc{Ruc}\-\textsc{Thesis}}
-\definecolor{rucred}{RGB}{137, 21, 36}
 %</dtx-style>
 %    \end{macrocode}
 % \fi
