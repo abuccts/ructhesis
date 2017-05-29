@@ -7,7 +7,7 @@ RucThesis is a LaTeX thesis template package for Renmin University of China supp
 RucThesis 是什么？
 -----------------
 
-RucThesis 为 __R__enmin __U__niversity of __C__hina __Thesis__ LaTeX Template 之缩写。
+RucThesis 为 <b>R</b>enmin <b>U</b>niversity of <b>C</b>hina <b>Thesis</b> LaTeX Template 之缩写。
 
 此宏包修改自 [ThuThesis](https://github.com/xueruini/thuthesis)，旨在建立一个简单易用的中国人民大学学位论文 LaTeX 模板，包括本科毕业论文、硕士论文以及博士论文。目前支持本科毕业论文，对其它论文的支持会陆续加入。
 
