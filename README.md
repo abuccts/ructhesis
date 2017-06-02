@@ -44,7 +44,7 @@ Makefile 的用法
 ---------------
 
 ``` sh
-make [{all|thesis|doc|clean|cleanall|distclean}] \
+make [{all|thesis|doc|count|clean|cleanall|distclean}] \
      [METHOD={latexmk|xelatex|pdflatex}]
 ```
 
@@ -56,6 +56,7 @@ make [{all|thesis|doc|clean|cleanall|distclean}] \
 | `make cls`       | 生成模板文件                                 |
 | `make thesis`    | 生成论文 main.pdf                            |
 | `make doc`       | 生成使用说明书 ructhesis.pdf                 |
+| `make count`     | 计算论文 main.pdf 字数                       |
 | `make clean`     | 删除示例文件的中间文件（不含 main.pdf）      |
 | `make cleanall`  | 删除示例文件的中间文件和 main.pdf            |
 | `make distclean` | 删除示例文件和模板的所有中间文件和 PDF       |
