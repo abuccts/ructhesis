@@ -17,14 +17,17 @@ CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
 # make deletion work on Windows
 ifdef SystemRoot
-	RM = del /Q
-	OPEN = start
+	RM = rm -f
+	#del /Q
+	OPEN = open
+	#start
 else
 	RM = rm -f
 	OPEN = open
 endif
 
-.PHONY: all clean distclean dist thesis viewthesis doc viewdoc cls check FORCE_MAKE
+
+.PHONY: all clean count distclean dist thesis viewthesis doc viewdoc cls check FORCE_MAKE
 
 all: doc thesis
 
@@ -73,6 +76,9 @@ else
 $(error Unknown METHOD: $(METHOD))
 
 endif
+
+count:
+	perl texcount.pl $(THESISMAIN).tex -inc -total
 
 clean:
 	latexmk -c $(PACKAGE).dtx $(THESISMAIN)
