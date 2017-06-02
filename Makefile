@@ -17,10 +17,8 @@ CLSFILES=dtx-style.sty $(PACKAGE).cls $(PACKAGE).cfg
 
 # make deletion work on Windows
 ifdef SystemRoot
-	RM = rm -f
-	#del /Q
-	OPEN = open
-	#start
+	RM = del /Q
+	OPEN = start
 else
 	RM = rm -f
 	OPEN = open
