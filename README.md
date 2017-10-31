@@ -78,5 +78,5 @@ make [{all|thesis|doc|count|clean|cleanall|distclean}] \
 
 * 本项目 fork 自 [ThuThesis](https://github.com/xueruini/thuthesis/tree/4deba6c6bf2adda781c10018eae6162e57c4b4dc)，遵守原项目的相关开源许可；
 * 中国人民大学中英文标志 `figures/ruc-*` 的版权归中国人民大学教务处所有；
-* (texcount.pl)[texcount.pl] 的版权归原作者所有，采用 [The LaTeX Project Public License](https://www.latex-project.org/lppl.txt]) 发布；
+* [texcount.pl](texcount.pl) 的版权归原作者所有，采用 [The LaTeX Project Public License](https://www.latex-project.org/lppl.txt) 发布；
 * 其余部分使用 [LaTeX Project Public License v1.3 (LPPL)](LICENSE) 授权。
