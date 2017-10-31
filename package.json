@@ -8,18 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xueruini/thuthesis.git"
+    "url": "git+https://github.com/abuccts/ructhesis.git"
   },
   "keywords": [
+    "tex",
     "LaTeX",
+    "thesis",
     "RucThesis"
   ],
   "author": "Yifan Xiong",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xueruini/thuthesis/issues"
+    "url": "https://github.com/abuccts/ructhesis/issues"
   },
-  "homepage": "https://github.com/xueruini/thuthesis#readme",
+  "homepage": "https://github.com/abuccts/ructhesis",
   "devDependencies": {
     "del": "^2.2.2",
     "gulp": "^3.9.1",
